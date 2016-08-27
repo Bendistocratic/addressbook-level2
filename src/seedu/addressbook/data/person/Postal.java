@@ -8,20 +8,18 @@ import seedu.addressbook.data.exception.IllegalValueException;
  */
 public class Postal {
 	
-    public static final String POSTAL_EXAMPLE = ", some postal";
+    public static final String POSTAL_EXAMPLE = ", 123456";
     public static final String MESSAGE_POSTAL_CONSTRAINTS = "Person postal addresses can be in any format";
     public static final String POSTAL_VALIDATION_REGEX = ".+";
 
     public final String postalValue;
-    private boolean isPrivate;
 
     /**
      * Validates given address.
      *
      * @throws IllegalValueException if given postal address string is invalid.
      */
-    public Postal(String postal, boolean isPrivate) throws IllegalValueException {
-        this.isPrivate = isPrivate;
+    public Postal(String postal) throws IllegalValueException {
         if (!isValidPostalAddress(postal)) {
             throw new IllegalValueException(MESSAGE_POSTAL_CONSTRAINTS);
         }
@@ -50,9 +48,5 @@ public class Postal {
     @Override
     public int hashCode() {
         return postalValue.hashCode();
-    }
-
-    public boolean isPrivate() {
-        return isPrivate;
     }
 }

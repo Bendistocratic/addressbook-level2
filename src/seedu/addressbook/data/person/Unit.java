@@ -13,15 +13,13 @@ public class Unit {
     public static final String UNIT_VALIDATION_REGEX = ".+";
 
     public final String unitValue;
-    private boolean isPrivate;
 
     /**
      * Validates given unit address.
      *
      * @throws IllegalValueException if given unit address string is invalid.
      */
-    public Unit(String unit, boolean isPrivate) throws IllegalValueException {
-        this.isPrivate = isPrivate;
+    public Unit(String unit) throws IllegalValueException {
         if (!isValidUnitAddress(unit)) {
             throw new IllegalValueException(MESSAGE_UNIT_CONSTRAINTS);
         }
@@ -50,9 +48,5 @@ public class Unit {
     @Override
     public int hashCode() {
         return unitValue.hashCode();
-    }
-
-    public boolean isPrivate() {
-        return isPrivate;
     }
 }

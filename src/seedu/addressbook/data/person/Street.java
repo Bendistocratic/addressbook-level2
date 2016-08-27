@@ -14,15 +14,13 @@ public class Street {
     public static final String STREET_VALIDATION_REGEX = ".+";
     
     public final String streetValue;
-    private boolean isPrivate;
 
     /**
      * Validates given street address.
      *
      * @throws IllegalValueException if given street string is invalid.
      */
-    public Street(String street, boolean isPrivate) throws IllegalValueException {
-        this.isPrivate = isPrivate;
+    public Street(String street) throws IllegalValueException {
         if (!isValidStreetAddress(street)) {
             throw new IllegalValueException(MESSAGE_STREET_CONSTRAINTS);
         }
@@ -51,9 +49,5 @@ public class Street {
     @Override
     public int hashCode() {
         return streetValue.hashCode();
-    }
-
-    public boolean isPrivate() {
-        return isPrivate;
     }
 }

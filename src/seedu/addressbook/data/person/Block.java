@@ -14,15 +14,13 @@ public class Block {
     public static final String BLOCK_VALIDATION_REGEX = ".+";
     
     public final String blockValue;
-    private boolean isPrivate;
     
     /**
      * Validates given block address.
      *
      * @throws IllegalValueException if given block string is invalid.
      */
-    public Block(String block, boolean isPrivate) throws IllegalValueException {
-        this.isPrivate = isPrivate;
+    public Block(String block) throws IllegalValueException {
         if (!isValidBlockAddress(block)) {
         	throw new IllegalValueException(MESSAGE_BLOCK_CONSTRAINTS);
         }
@@ -51,9 +49,5 @@ public class Block {
     @Override
     public int hashCode() {
     	return blockValue.hashCode();
-    }
-    
-    public boolean isPrivate() {
-    	return this.isPrivate;
     }
 }
