@@ -4,18 +4,23 @@ import seedu.addressbook.data.exception.IllegalValueException;
 
 /**
  * Represents a Person's block address in the address book.
- * Guarantees: immutable; is valid as declared in {@link #isValidAddress(String)}
+ * Guarantees: immutable; is valid as declared in {@link #isValidBlockAddress(String)}
  */
 
 public class Block {
 	
-    public static final String EXAMPLE = "123";
+    public static final String BLOCK_EXAMPLE = "123";
     public static final String MESSAGE_BLOCK_CONSTRAINTS = "Person block addresses can be in any format";
     public static final String BLOCK_VALIDATION_REGEX = ".+";
     
     public final String blockValue;
     private boolean isPrivate;
     
+    /**
+     * Validates given address.
+     *
+     * @throws IllegalValueException if given block string is invalid.
+     */
     public Block(String block, boolean isPrivate) throws IllegalValueException {
         this.isPrivate = isPrivate;
         if (!isValidBlockAddress(block)) {
@@ -24,6 +29,9 @@ public class Block {
     	this.blockValue = block;
     }
     
+    /**
+     * Returns true if a given string is a valid person block address.
+     */
     public static boolean isValidBlockAddress(String testBlock) {
     	return testBlock.matches(BLOCK_VALIDATION_REGEX);
     }
@@ -35,9 +43,9 @@ public class Block {
     
     @Override
     public boolean equals(Object other) {
-    	return other == this 
-    			|| (other instanceof Block 
-    					&& this.blockValue.equals(((Block)other).blockValue));
+    	return other == this // short circuit if same object
+    			|| (other instanceof Block  // instanceof handles nulls
+    					&& this.blockValue.equals(((Block)other).blockValue)); // state check
     }
     
     @Override
