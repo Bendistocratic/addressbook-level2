@@ -17,7 +17,7 @@ public class Street {
     private boolean isPrivate;
 
     /**
-     * Validates given address.
+     * Validates given street address.
      *
      * @throws IllegalValueException if given street string is invalid.
      */

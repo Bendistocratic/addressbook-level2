@@ -17,7 +17,7 @@ public class Block {
     private boolean isPrivate;
     
     /**
-     * Validates given address.
+     * Validates given block address.
      *
      * @throws IllegalValueException if given block string is invalid.
      */
