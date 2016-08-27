@@ -9,6 +9,7 @@ import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
 import java.io.*;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
@@ -31,6 +32,16 @@ public class StorageFile {
         public InvalidStorageFilePathException(String message) {
             super(message);
         }
+    }
+    
+    /**
+     * Signals that file is missing
+     */
+    
+    public static class StorageFileDeletionException extends Exception {
+    	public StorageFileDeletionException(String message) {
+    		super(message);
+    	}
     }
 
     /**
@@ -139,6 +150,15 @@ public class StorageFile {
         } catch (IllegalValueException ive) {
             throw new StorageOperationException("File contains illegal data values; data type constraints not met");
         }
+    }
+    
+    /**
+     * Checks if the file is in the disk
+     * @throws StorageFileDeletionException if file not found on disk
+     */
+    public void checkFileExistOnDisk() throws StorageFileDeletionException {
+    	if (!Files.exists(path))
+    		throw new StorageFileDeletionException("File is either missing or deleted.");
     }
 
     public String getPath() {
