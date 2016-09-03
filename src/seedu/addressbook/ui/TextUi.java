@@ -4,6 +4,7 @@ import static seedu.addressbook.common.Messages.*;
 
 import seedu.addressbook.commands.CommandResult;
 import seedu.addressbook.data.person.ReadOnlyPerson;
+import seedu.addressbook.data.person.Printable;
 
 import java.io.InputStream;
 import java.io.PrintStream;
@@ -45,6 +46,18 @@ public class TextUi {
     public TextUi(InputStream in, PrintStream out) {
         this.in = new Scanner(in);
         this.out = out;
+    }
+    
+    /**
+     * Returns a concatenated version of the printable strings of each object
+     */
+    
+    public String getPrintableString(Printable... printables) {
+        final StringBuilder formatted = new StringBuilder();
+        for (Printable x : printables) {
+            formatted.append(x.getPrintableString()).append('\n');
+        }
+        return formatted.toString();
     }
 
     /**
