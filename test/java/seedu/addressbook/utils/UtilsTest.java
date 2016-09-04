@@ -9,17 +9,17 @@ public class UtilsTest {
     
     @Test
     public void test_isAnyNull_allNotNull() {
-        assertEquals(Utils.isAnyNull('I', 2, 3, "don't", 5, "what", true, false), false);
+        assertTrue(Utils.isAnyNull('I', 2, 3, "don't", 5, "what", true, false));
     }
     
     @Test
     public void test_isAnyNull_someNull() {
-        assertEquals(Utils.isAnyNull(null, "am", 'I', true, 1, false, "doing", 7), true);
+        assertTrue(Utils.isAnyNull(null, "am", 'I', true, 1, false, "doing", 7));
     }
     
     @Test
     public void test_isAnyNull_allNull() {
-        assertEquals(Utils.isAnyNull(null, null, null, null, null), true);
+        assertTrue(Utils.isAnyNull(null, null, null, null, null));
     }
     
     @Test
@@ -28,7 +28,7 @@ public class UtilsTest {
         for (int i = 0; i < 10; i++) {
             testObjects.add(i);
         }
-        assertEquals(Utils.elementsAreUnique(testObjects), true);
+        assertTrue(Utils.elementsAreUnique(testObjects));
     }
     
     @Test
@@ -40,7 +40,7 @@ public class UtilsTest {
             else
                 testObjects.add(i);
         }
-        assertEquals(Utils.elementsAreUnique(testObjects), false);
+        assertTrue(Utils.elementsAreUnique(testObjects));
     }
     
     @Test
@@ -49,7 +49,7 @@ public class UtilsTest {
         for (int i = 0; i < 10; i++) {
             testObjects.add(1);
         }
-        assertEquals(Utils.elementsAreUnique(testObjects), false);
+        assertTrue(Utils.elementsAreUnique(testObjects));
     }
 
     
