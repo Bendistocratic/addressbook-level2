@@ -65,6 +65,7 @@ public class Name {
             for (int y = 0; y < one.length; y++) {
                 if (one[y].equals(two[x])) {
                     isInName = true;
+                    break;
                 }
             }
         }
